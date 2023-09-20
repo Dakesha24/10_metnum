@@ -2,11 +2,12 @@
 # No 2
 # 3. Buatlah modifikasi agar akarnya dapat ditampilkan dalam bentuk grafik
 
-#library numpy untuk operasi numerik
+# Import library NumPy untuk operasi numerik
 import numpy as np
-#menambah matplotlib ke dalam program untuk grafik
+# Import library Matplotlib untuk membuat grafik
 import matplotlib.pyplot as plt 
 
+# Definisikan fungsi my_bisection untuk mencari akar fungsi
 def my_bisection(f, a, b, e, n):
     if np.sign(f(a)) == np.sign(f(b)):
         raise Exception('Tidak ada akar pada interval a dan b')
@@ -26,7 +27,7 @@ def my_bisection(f, a, b, e, n):
     last_value = (a + b) / 2
     return last_value
 
-# Meminta user untuk memasukkan fungsi, interval, galat, dan iterasi
+# Meminta input dari pengguna: fungsi, interval, galat, dan iterasi
 input_f = input("Masukkan fungsi f(x): ")
 input_a = float(input("Masukkan interval bawah (a): "))
 input_b = float(input("Masukkan interval atas (b): "))
@@ -41,16 +42,17 @@ c = my_bisection(f, input_a, input_b, input_e, input_n)
 print("Akar (c) =", c)
 
 # Membuat grafik fungsi
-x = np.linspace(input_a, input_b, 400) #menghasilkan array antara interval untuk mendefinisikan nilai x pada grafik
-y = f(x) #mengevaluasi f(x) pada setiap 'x' dalam array yg dihasilkan, untuk mendefinikan nilai y pada grafik 
+x = np.linspace(input_a, input_b, 400) # Menghasilkan array yang berisi nilai x dalam interval
+y = f(x) # Menghitung nilai y untuk setiap x dalam array
 
-plt.plot(x, y, label='f(x)') #untuk menghubungkan titik-titik data pada sumbu x dan y, lalu diberi label f(x) untuk memberikan informasi tambahan
-plt.axhline(0, color='black', linewidth=0.5) #garis horizontal, 0=posisi; color=warna garis; linewidth=tebalgaris
-plt.axvline(0, color='black', linewidth=0.5)  #garis vertikal, 0=posisi; color=warna garis; linewidth=tebalgaris
-plt.axvline(c, color='red', linestyle='--', label=f'Akar (x={c:.4f})') #garis vertikal, c=posisigaris(akar hampiran); color:warna_garis; linestyle:gaya_garis; label=untuk memberi informasi akar yang ditemukan, dengan 4 angka belakang koma
-plt.legend() #menambahkan legend (keterangan) pada grafik
-plt.title('Hasil Grafik, Pencarian Akar') #judul grafik
-plt.xlabel('x') #menambahkan label pada sumbu x
-plt.ylabel('f(x)') #menambahkan label pada sumbu y
+plt.plot(x, y, label='f(x)') # Menampilkan grafik fungsi f(x)
+plt.axhline(0, color='black', linewidth=0.5) # Garis horizontal pada y=0
+plt.axvline(0, color='black', linewidth=0.5) # Garis vertikal pada x=0
+plt.axvline(c, color='red', linestyle='--', label=f'Akar (x={c:.4f})') # Garis vertikal pada x=c (akar) dengan label
+plt.legend() # Menampilkan legenda pada grafik
+plt.title('Grafik Fungsi dan Pencarian Akar') # Judul grafik
+plt.xlabel('x') # Label sumbu x
+plt.ylabel('f(x)') # Label sumbu y
 
-plt.show() #menampilkan grafik
+plt.show() # Menampilkan grafik
+
