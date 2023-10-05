@@ -37,6 +37,8 @@ plt.plot(x_vals, f_vals, label='f(x)')
 plt.scatter(estimate, f.evalf(subs={x: estimate}), color='red', label='Estimasi Akar')
 plt.xlabel('x')
 plt.ylabel('f(x)')
+plt.axhline(0, color='black', linewidth=0.5) #garis horizontal, 0=posisi; color=warna garis; linewidth=tebalgaris
+plt.axvline(0, color='black', linewidth=0.5)  #garis vertikal, 0=posisi; color=warna garis; linewidth=tebalgaris
 plt.legend()
 plt.title('Plot Fungsi dan Estimasi Akar')
 plt.grid(True)
