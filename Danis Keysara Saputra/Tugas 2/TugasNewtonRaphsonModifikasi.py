@@ -1,78 +1,43 @@
-#Program metode Newton Raphson untuk menyelesaikan fungsi non-linear, hasil modifikasi dari contoh yang diberikan
+import sympy as sp
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Fungsi
-def f(x):
-    return x**2 - 2*x - 8
+# Meminta input dari pengguna untuk fungsi
+user_input = input("Masukkan fungsi f(x): ")
+x = sp.symbols('x')
+f = sp.sympify(user_input)
 
-# Turunan fungsi (ganti dengan metode numerik jika diperlukan)
-def g(x):
-    return 2*x - 2
+# Menghitung turunan fungsi secara otomatis
+f_prime = sp.diff(f, x)
 
-# Metode Newton-Raphson
-def newtonRaphson(x0, e, N):
-    step = 1
-    flag = 1
-    condition = True
-    while condition:
-        if g(x0) == 0.0:
-            print('dibagi 0 error')
-            break
-        x1 = x0 - f(x0) / g(x0)
-        print(f'Iterasi-{step}, x1 = {x1:.6f} dan f(x1) = {f(x1):.6f}')
-        x0 = x1
-        step += 1
+# Meminta input dari pengguna untuk nilai awal aproksimasi
+n = float(input("Masukkan Nilai Aproksimasi Awal: "))
 
-        if step > N:
-            flag = 0
-            break
+# Meminta input dari pengguna untuk toleransi error (galat)
+e = float(input("Masukkan Toleransi Error (galat): "))
 
-        condition = abs(f(x1)) > e
-
-    if flag == 1:
-        print(f'\nakar yang dibutuhkan: {x1:.8f}')
+# Menginisialisasi fungsi Newton-Raphson
+def newton_raphson(f, df, xi, e):
+    print("Nilai xi: ", xi)
+    if abs(f.evalf(subs={x: xi})) < e:
+        return xi
     else:
-        print('\ntidak konvergen')
+        xi = xi - f.evalf(subs={x: xi})/df.evalf(subs={x: xi})
+        return newton_raphson(f, df, xi, e)
 
-# Fungsi untuk memilih metode
-def choose_method():
-    print("Pilih Metode:")
-    print("1. Newton-Raphson")
-    print("2. Metode Bisection")
-    choice = input("Masukkan pilihan: ")
-    return choice
+# Pemanggilan fungsi Newton-Raphson
+estimate = newton_raphson(f, f_prime, n, e)
+print ("Akar yang diestimasi = %.6f" % estimate)
 
-# Fungsi untuk memasukkan input dari pengguna
-def get_user_input():
-    x0 = float(input('Masukkan perkiraan awal (x0): '))
-    e = float(input('Masukkan perkiraan error (e): '))
-    N = int(input('Masukkan jumlah step (N): '))
-    return x0, e, N
+# Plot fungsi dan estimasi akar
+x_vals = np.linspace(-10, 10, 1000)
+f_vals = [f.evalf(subs={x: val}) for val in x_vals]
 
-# Fungsi untuk menampilkan grafik fungsi
-def plot_function():
-    x = np.linspace(-10, 10, 400)
-    y = f(x)
-    plt.plot(x, y)
-    plt.xlabel('x')
-    plt.ylabel('f(x)')
-    plt.title('Grafik Fungsi')
-    plt.grid(True)
-    plt.show()
-
-# Main program
-method = choose_method()
-x0, e, N = get_user_input()
-
-if method == '1':
-    newtonRaphson(x0, e, N)
-elif method == '2':
-    print("Metode Bisection belum diimplementasikan")  # Implementasi Metode Bisection disini
-else:
-    print("Pilihan tidak valid")
-
-# Tampilkan grafik fungsi jika diinginkan
-plot_choice = input("Apakah Anda ingin melihat grafik fungsi? (y/n): ")
-if plot_choice.lower() == 'y':
-    plot_function()
+plt.plot(x_vals, f_vals, label='f(x)')
+plt.scatter(estimate, f.evalf(subs={x: estimate}), color='red', label='Estimasi Akar')
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.legend()
+plt.title('Plot Fungsi dan Estimasi Akar')
+plt.grid(True)
+plt.show()
