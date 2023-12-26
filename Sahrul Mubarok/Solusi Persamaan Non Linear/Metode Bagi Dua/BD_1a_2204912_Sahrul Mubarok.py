@@ -1,4 +1,4 @@
-# Danis Keysara Saputra (2207275)
+# Sahrul Mubarok (2204912)
 # No 1
 # Buatlah sebuah fungsi penyelesaian yang tepat baik dengan menggunakan metode Bagi Dua ketika
 # a. f(x) = x^3 - 2x + 1
