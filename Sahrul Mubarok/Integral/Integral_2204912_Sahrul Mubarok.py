@@ -1,6 +1,6 @@
 '''
-Nama  : Danis Keysara Saputra
-NIM   : 2207275
+Nama  : Sahrul Mubarok
+NIM   : 2204912
 Kelas : Pendidikan Ilmu Komputer A 2022
 
 
