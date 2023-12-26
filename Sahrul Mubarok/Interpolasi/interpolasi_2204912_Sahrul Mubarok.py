@@ -1,7 +1,7 @@
 '''
-    Nama: Danis Keysara Saputra
-    NIM : 2207275
-    Pendidikan Ilmu Komputer A 2022
+    Nama  : Sahrul Mubarok
+    NIM   : 2204912
+    Kelas : Pendidikan Ilmu Komputer A 2022
 '''
 
 def linear_interpolation(x_values, y_values, x_interpolate):
