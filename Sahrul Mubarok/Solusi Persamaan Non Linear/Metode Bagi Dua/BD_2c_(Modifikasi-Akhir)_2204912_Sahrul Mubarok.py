@@ -1,4 +1,4 @@
-# Danis Keysara Saputra (2207275)
+# Sahrul Mubarok (2204912)
 # No 2
 # 3. Buatlah modifikasi agar akarnya dapat ditampilkan dalam bentuk grafik
 
