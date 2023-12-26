@@ -1,4 +1,4 @@
-# Danis Keysara Saputra (2207275)
+# Sahrul Mubarok (2204912)
 # No 2
 # 1. Buatlah modifikasi fungsi ketika kriteria program berhenti adalah sudah mencapai pada iterasi ke-n
 
