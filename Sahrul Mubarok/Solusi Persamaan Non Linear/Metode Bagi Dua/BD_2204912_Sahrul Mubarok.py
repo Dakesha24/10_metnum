@@ -1,4 +1,4 @@
-# Danis Keysara Saputra
+# Sahrul Mubarok (2204912)
 # No 2
 # 2. Buatlah modifikasi agar user dapat menginputkan fungsi maupun batas akar dan galatnya
 
